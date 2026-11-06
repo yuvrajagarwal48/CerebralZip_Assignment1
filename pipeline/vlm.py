@@ -87,9 +87,13 @@ class QwenVLVerifier:
 
             prompt_text = (
                 f"You are an objective video action verifier. Examine these sequential frames ({c_start:.1f}s to {c_end:.1f}s).\n"
-                f"Candidates: {', '.join(proposed_classes)}.\n"
-                "For EACH activity, determine if visible physical bodily movement or actions are observed.\n"
-                "Rules: Do NOT infer intent. Output format for each class:\n"
+                f"Candidate Activities to evaluate:\n"
+            )
+            for cls_name in proposed_classes:
+                prompt_text += f"- {cls_name}\n"
+            prompt_text += (
+                "\nFor EACH candidate activity above, determine if visible physical bodily movement or actions matching that activity are observed.\n"
+                "Rules: Do NOT infer intent. Output exactly one line per class in this format:\n"
                 "Class: <class_name> | Status: <SUPPORTED, REJECTED, or UNCERTAIN> | Evidence: <brief description>"
             )
 
@@ -108,26 +112,51 @@ class QwenVLVerifier:
                 inputs = self.processor(text=[chat_prompt], images=pil_frames, padding=True, return_tensors="pt")
                 inputs = {k: v.to(self.device) if isinstance(v, torch.Tensor) else v for k, v in inputs.items()}
 
+                max_tokens = min(512, max(128, 96 * len(proposed_classes)))
                 with torch.inference_mode():
-                    output_ids = self.model.generate(**inputs, max_new_tokens=128, do_sample=False)
+                    output_ids = self.model.generate(**inputs, max_new_tokens=max_tokens, do_sample=False)
                 vlm_out = self.processor.batch_decode(output_ids[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0]
 
-                for cand in prop.candidates:
-                    cand_lower = cand.activity_class.lower()
-                    matched_line = next((line for line in vlm_out.split("\n") if cand_lower.split("/")[0] in line.lower()), "")
-                    line_lower = matched_line.lower()
+                lines = [l.strip() for l in vlm_out.split("\n") if l.strip()]
 
-                    if any(w in line_lower for w in ["rejected", "not supported", "false", "disproven"]):
-                        cand.vlm_decision = "REJECTED"
-                        cand.vlm_verified = False
-                    elif any(w in line_lower for w in ["supported", "confirmed", "verified", "observed"]):
-                        cand.vlm_decision = "SUPPORTED"
-                        cand.vlm_verified = True
+                for cand in prop.candidates:
+                    c_name = cand.activity_class
+                    c_lower = c_name.lower()
+                    c_parts = [p.strip().lower() for p in c_name.split("/") if len(p.strip()) > 3]
+
+                    matched_line = ""
+                    for l in lines:
+                        l_low = l.lower()
+                        if c_lower in l_low or any(p in l_low for p in c_parts):
+                            matched_line = l
+                            break
+
+                    if matched_line:
+                        l_low = matched_line.lower()
+                        if any(w in l_low for w in ["rejected", "not supported", "false", "disproven", "no action", "no physical"]):
+                            cand.vlm_decision = "REJECTED"
+                            cand.vlm_verified = False
+                        elif any(w in l_low for w in ["supported", "confirmed", "verified", "observed", "consistent", "visible"]):
+                            cand.vlm_decision = "SUPPORTED"
+                            cand.vlm_verified = True
+                        else:
+                            cand.vlm_decision = "UNCERTAIN"
+                            cand.vlm_verified = True
+
+                        # Extract clean evidence description without the redundant prefix
+                        clean_ev = matched_line
+                        for marker in ["Evidence:", "evidence:", "Reason:", "reason:", "|"]:
+                            if marker in clean_ev:
+                                parts = clean_ev.split(marker)
+                                if len(parts) > 1 and parts[-1].strip():
+                                    clean_ev = parts[-1].strip()
+                        cand.vlm_evidence = clean_ev
                     else:
+                        # Candidate class was NOT explicitly evaluated in the VLM output
+                        # NEVER dump another candidate class's text!
                         cand.vlm_decision = "UNCERTAIN"
                         cand.vlm_verified = True
-
-                    cand.vlm_evidence = matched_line.strip() if matched_line else vlm_out.strip()
+                        cand.vlm_evidence = f"Action evidence for '{cand.activity_class}' was inconclusive in this interval; preserved as uncertain."
 
             except Exception as e:
                 logger.warning(f"VLM verification exception: {e}")

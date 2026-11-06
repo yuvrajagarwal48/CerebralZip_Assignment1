@@ -307,6 +307,12 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
         for idx, a in enumerate(activities, 1):
             vlm_dec = a.get("vlm_decision", "N/A")
             status_label = "🟢 SUPPORTED" if vlm_dec == "SUPPORTED" else ("🟠 UNCERTAIN" if vlm_dec == "UNCERTAIN" else vlm_dec)
+            clean_ev = str(a.get("vlm_evidence") or "N/A")
+            if "Evidence:" in clean_ev:
+                clean_ev = clean_ev.split("Evidence:")[-1].strip()
+            elif "|" in clean_ev and "Class:" in clean_ev:
+                clean_ev = clean_ev.split("|")[-1].strip()
+
             table_rows.append({
                 "#": idx,
                 "Activity Class": a.get("class", "Unknown"),
@@ -315,7 +321,7 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
                 "Duration (s)": f"{(a.get('end_time', 0.0) - a.get('start_time', 0.0)):.1f}",
                 "Calibrated Conf": f"{a.get('confidence', 0.0):.4f}",
                 "VLM Status": status_label,
-                "VLM Evidence": a.get("vlm_evidence", "N/A")
+                "VLM Evidence": clean_ev
             })
         st.table(pd.DataFrame(table_rows))
 
@@ -340,8 +346,16 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
                 cls_title = act.get("class", "Activity")
                 conf_val = act.get("confidence", 0.0)
                 vlm_dec = act.get("vlm_decision", "SUPPORTED")
-                vlm_ev = act.get("vlm_evidence", "")
+                vlm_ev = str(act.get("vlm_evidence") or "")
                 is_supported = (vlm_dec == "SUPPORTED")
+
+                # Clean up any legacy prefix so only the visual evidence appears
+                if "Evidence:" in vlm_ev:
+                    clean_vlm_ev = vlm_ev.split("Evidence:")[-1].strip()
+                elif "|" in vlm_ev and "Class:" in vlm_ev:
+                    clean_vlm_ev = vlm_ev.split("|")[-1].strip()
+                else:
+                    clean_vlm_ev = vlm_ev
 
                 # Show SUPPORTED in prominent GREEN box, UNCERTAIN in prominent ORANGE box
                 if is_supported:
@@ -349,14 +363,14 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
                         f"**🟢 Event #{idx + 1}: {cls_title} [SUPPORTED]**\n\n"
                         f"⏱️ **Interval:** `[{s_t:.1f}s - {e_t:.1f}s]` (Duration: `{dur_t:.1f}s`) | "
                         f"**Calibrated Conf:** `{conf_val:.3f}`  \n"
-                        f"📝 **VLM Evidence:** *{vlm_ev if vlm_ev else 'Bodily action verified'}*"
+                        f"📝 **Action Evidence:** *{clean_vlm_ev if clean_vlm_ev else 'Bodily action verified'}*"
                     )
                 else:
                     st.warning(
                         f"**🟠 Event #{idx + 1}: {cls_title} [UNCERTAIN]**\n\n"
                         f"⏱️ **Interval:** `[{s_t:.1f}s - {e_t:.1f}s]` (Duration: `{dur_t:.1f}s`) | "
                         f"**Calibrated Conf:** `{conf_val:.3f}` (0.85x adjusted)  \n"
-                        f"📝 **VLM Evidence:** *{vlm_ev if vlm_ev else 'Bodily action uncertain'}*"
+                        f"📝 **Action Evidence:** *{clean_vlm_ev if clean_vlm_ev else 'Bodily action uncertain'}*"
                     )
 
                 clip_path = str(temp_clips_dir / f"clip_{vid_stem}_{idx}_{int(s_t)}_{int(e_t)}.mp4")
