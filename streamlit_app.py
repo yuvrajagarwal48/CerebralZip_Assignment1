@@ -2,11 +2,12 @@
 """
 streamlit_app.py: Robust Zero-Shot Temporal Action Localization Web Demo.
 Engineered for reliable execution across local environments, Kaggle, and reverse proxies (localtunnel/ngrok/cloudflared).
-Features:
+
+Key Features:
 - No video preloaded on startup.
-- Multi-input support (Upload, Dataset Select, Direct Filepath).
-- Browser-native H.264 video clipping (FFmpeg + OpenCV fallback).
-- Resilient UI components (zero dependency on heavy dynamically-split chunks).
+- Green highlighted cards for SUPPORTED activities; Orange highlighted cards for UNCERTAIN activities.
+- Browser-native H.264 video clipping with FFmpeg and OpenCV fallback.
+- 100% resilient UI: Zero reliance on dynamically imported JS chunks (st.metric, st.radio, st.dataframe eliminated).
 """
 
 import os
@@ -53,11 +54,11 @@ def extract_video_clip(
 ) -> bool:
     """
     Extracts a temporal sub-clip between start_sec and end_sec.
-    Prioritizes FFmpeg with browser-native H.264 (yuv420p + faststart)
+    Prioritizes FFmpeg with browser-native H.264 (yuv420p + faststart + zero timestamps)
     for guaranteed HTML5 browser playback, with automatic OpenCV fallback.
     """
     duration = max(0.5, end_sec - start_sec)
-    ffmpeg_bin = shutil.which("ffmpeg")
+    ffmpeg_bin = shutil.which("ffmpeg") or ("/usr/bin/ffmpeg" if os.path.exists("/usr/bin/ffmpeg") else None)
 
     # 1. Primary: FFmpeg (available by default on Kaggle, Colab, and standard Linux)
     if ffmpeg_bin:
@@ -65,19 +66,38 @@ def extract_video_clip(
             ffmpeg_bin,
             "-y",
             "-ss", f"{start_sec:.2f}",
-            "-t", f"{duration:.2f}",
             "-i", str(src_video_path),
+            "-t", f"{duration:.2f}",
             "-c:v", "libx264",
-            "-preset", "veryfast",
-            "-crf", "23",
+            "-preset", "ultrafast",
+            "-crf", "22",
             "-pix_fmt", "yuv420p",
             "-movflags", "+faststart",
+            "-avoid_negative_ts", "make_zero",
             "-an",
             str(output_path)
         ]
         try:
-            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
+            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=45)
             if res.returncode == 0 and os.path.isfile(output_path) and os.path.getsize(output_path) > 100:
+                return True
+        except Exception:
+            pass
+
+        # Secondary FFmpeg attempt: Stream copy
+        cmd_copy = [
+            ffmpeg_bin,
+            "-y",
+            "-ss", f"{start_sec:.2f}",
+            "-i", str(src_video_path),
+            "-t", f"{duration:.2f}",
+            "-c", "copy",
+            "-avoid_negative_ts", "make_zero",
+            str(output_path)
+        ]
+        try:
+            res_c = subprocess.run(cmd_copy, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
+            if res_c.returncode == 0 and os.path.isfile(output_path) and os.path.getsize(output_path) > 100:
                 return True
         except Exception:
             pass
@@ -158,7 +178,12 @@ st.caption("Automated video surveillance activity detection, temporal interval b
 st.markdown("### 1. Select Video Source")
 input_mode = st.selectbox(
     "Choose video input method:",
-    options=["-- Select an input method --", "Enter Video File Path (Recommended for Kaggle)", "Select from Benchmark Dataset", "Upload Video File"],
+    options=[
+        "-- Select an input method --",
+        "Enter Video File Path (Recommended for Kaggle)",
+        "Select from Benchmark Dataset",
+        "Upload Video File"
+    ],
     index=0
 )
 
@@ -215,16 +240,16 @@ else:
         try:
             with open(video_to_process, "rb") as f_v:
                 vid_bytes = f_v.read()
-            st.video(vid_bytes, format="video/mp4")
+            st.video(vid_bytes, format="video/mp4", start_time=0)
         except Exception:
-            st.video(video_to_process)
+            st.video(video_to_process, format="video/mp4", start_time=0)
 
         try:
             meta = VideoMetadata.extract(video_to_process)
             m1, m2, m3 = st.columns(3)
-            m1.metric("Duration", f"{meta.duration_sec:.1f}s")
-            m2.metric("FPS", f"{meta.fps:.1f}")
-            m3.metric("Resolution", f"{meta.resolution[0]}x{meta.resolution[1]}")
+            m1.info(f"⏱️ **Duration**\n\n### {meta.duration_sec:.1f}s")
+            m2.info(f"🎞️ **FPS**\n\n### {meta.fps:.1f}")
+            m3.info(f"📐 **Resolution**\n\n### {meta.resolution[0]}x{meta.resolution[1]}")
         except Exception as e:
             st.caption(f"Could not read metadata: {e}")
 
@@ -235,40 +260,27 @@ else:
         st.info(r"**Stage 3: Relative Class Evidence** — Competitive margin $R_c(t) = S_c(t) - \max_{j \neq c} S_j(t)$ with Gaussian smoothing ($\sigma=0.5$).")
         st.info("**Stage 4: LogOIC Contrast & Calibration** — Inner/outer contrast with dynamic range calibration.")
         st.info("**Stage 5: Class-Wise NMS & Grouping** — Suppresses duplicates and clusters multi-hypothesis proposals.")
-        st.info("**Stage 6: Qwen2-VL Grounded Verification** — Bodily action screening; UNCERTAIN attenuated by 0.85x, REJECTED pruned.")
+        st.info("**Stage 6: Qwen2-VL Grounded Verification** — Bodily action screening: :green[**SUPPORTED**] retained at full strength, :orange[**UNCERTAIN**] attenuated (0.85x), REJECTED pruned.")
 
     # Execution Action
     st.markdown("---")
     st.markdown("### 3. Pipeline Execution")
     if st.button("🚀 Run Temporal Action Localization Pipeline", type="primary", use_container_width=True):
-        progress_bar = st.progress(0, text="Initializing Pipeline & Pre-encoding Text Descriptions...")
-        status_box = st.status("Running Zero-Shot Detection Pipeline...", expanded=True)
+        status_box = st.info("⚙️ Running Zero-Shot Temporal Action Localization Pipeline (X-CLIP + Qwen2-VL)...")
 
         try:
             start_time = time.time()
-            status_box.write("⚙️ Stage 1 & 2: Chunking video and extracting X-CLIP action embeddings...")
-            progress_bar.progress(25, text="Extracting X-CLIP Action Embeddings...")
-
-            status_box.write("📊 Stage 3 & 4: Calculating relative margins, Gaussian smoothing, and LogOIC contrast...")
-            progress_bar.progress(50, text="Evaluating LogOIC & Calibrating Dynamic Confidence...")
-
-            status_box.write("🧠 Stage 5 & 6: Applying Class-Wise NMS and executing Qwen-VL action verification...")
-            progress_bar.progress(75, text="Running Qwen2-VL Grounded Verification...")
-
-            # Run prediction
             result = predict_video(video_to_process)
             elapsed = time.time() - start_time
-
-            progress_bar.progress(100, text=f"Processing Complete in {elapsed:.2f}s!")
-            status_box.update(label=f"✅ Video processing complete ({elapsed:.2f}s)", state="complete", expanded=False)
 
             st.session_state["last_result"] = result
             st.session_state["last_video"] = video_to_process
             st.session_state["last_elapsed"] = elapsed
 
+            st.success(f"✅ Video processing complete in {elapsed:.2f}s!")
+
         except Exception as e:
-            status_box.update(label="❌ Pipeline execution error", state="error")
-            st.error(f"Error during pipeline execution: {e}")
+            st.error(f"❌ Error during pipeline execution: {e}")
 
 # Display Results
 if "last_result" in st.session_state and st.session_state.get("last_video") == video_to_process:
@@ -279,13 +291,13 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
     st.markdown("---")
     st.markdown("### 4. Detection & Localization Results")
 
-    # Metrics Summary Cards
+    # Metrics Summary Cards using core st.info (zero chunk dependencies)
     col_m1, col_m2, col_m3, col_m4 = st.columns(4)
-    col_m1.metric("Activities Detected", len(activities))
+    col_m1.info(f"🎯 **Activities Detected**\n\n### {len(activities)}")
     max_conf = max([a.get("confidence", 0.0) for a in activities]) if activities else 0.0
-    col_m2.metric("Max Calibrated Confidence", f"{max_conf:.3f}")
-    col_m3.metric("Video Duration", f"{res.get('duration', 0.0):.1f}s")
-    col_m4.metric("Pipeline Runtime", f"{elapsed:.2f}s")
+    col_m2.info(f"⭐ **Max Confidence**\n\n### {max_conf:.3f}")
+    col_m3.info(f"⏱️ **Video Duration**\n\n### {res.get('duration', 0.0):.1f}s")
+    col_m4.info(f"⚡ **Pipeline Runtime**\n\n### {elapsed:.2f}s")
 
     if not activities:
         st.info("No abnormal activities exceeded the calibrated detection thresholds for this video clip.")
@@ -293,6 +305,8 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
         # Structured Results Table using st.table (reliable plain HTML rendering, zero JS chunk dependency)
         table_rows = []
         for idx, a in enumerate(activities, 1):
+            vlm_dec = a.get("vlm_decision", "N/A")
+            status_label = "🟢 SUPPORTED" if vlm_dec == "SUPPORTED" else ("🟠 UNCERTAIN" if vlm_dec == "UNCERTAIN" else vlm_dec)
             table_rows.append({
                 "#": idx,
                 "Activity Class": a.get("class", "Unknown"),
@@ -300,7 +314,7 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
                 "End (s)": f"{a.get('end_time', 0.0):.1f}",
                 "Duration (s)": f"{(a.get('end_time', 0.0) - a.get('start_time', 0.0)):.1f}",
                 "Calibrated Conf": f"{a.get('confidence', 0.0):.4f}",
-                "VLM Status": a.get("vlm_decision", "N/A"),
+                "VLM Status": status_label,
                 "VLM Evidence": a.get("vlm_evidence", "N/A")
             })
         st.table(pd.DataFrame(table_rows))
@@ -308,7 +322,7 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
         # Clipped Video Segment Extraction & Playback
         st.markdown("---")
         st.markdown("### 5. Clipped Video Segments of Detected Activities")
-        st.caption("Individual video segments extracted according to localized temporal boundaries (encoded in browser-native H.264):")
+        st.caption("Color-coded event cards: :green[**🟢 GREEN = SUPPORTED**] (Grounded bodily action confirmed) | :orange[**🟠 ORANGE = UNCERTAIN**] (Action inferred/ambiguous)")
 
         vid_stem = Path(video_to_process).stem
         temp_clips_dir = Path(tempfile.gettempdir()) / "tal_extracted_clips"
@@ -322,12 +336,29 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
             with col_target:
                 s_t = act.get("start_time", 0.0)
                 e_t = act.get("end_time", 0.0)
+                dur_t = max(0.1, e_t - s_t)
                 cls_title = act.get("class", "Activity")
                 conf_val = act.get("confidence", 0.0)
                 vlm_dec = act.get("vlm_decision", "SUPPORTED")
                 vlm_ev = act.get("vlm_evidence", "")
+                is_supported = (vlm_dec == "SUPPORTED")
 
-                st.markdown(f"#### Event #{idx + 1}: `{cls_title}`")
+                # Show SUPPORTED in prominent GREEN box, UNCERTAIN in prominent ORANGE box
+                if is_supported:
+                    st.success(
+                        f"**🟢 Event #{idx + 1}: {cls_title} [SUPPORTED]**\n\n"
+                        f"⏱️ **Interval:** `[{s_t:.1f}s - {e_t:.1f}s]` (Duration: `{dur_t:.1f}s`) | "
+                        f"**Calibrated Conf:** `{conf_val:.3f}`  \n"
+                        f"📝 **VLM Evidence:** *{vlm_ev if vlm_ev else 'Bodily action verified'}*"
+                    )
+                else:
+                    st.warning(
+                        f"**🟠 Event #{idx + 1}: {cls_title} [UNCERTAIN]**\n\n"
+                        f"⏱️ **Interval:** `[{s_t:.1f}s - {e_t:.1f}s]` (Duration: `{dur_t:.1f}s`) | "
+                        f"**Calibrated Conf:** `{conf_val:.3f}` (0.85x adjusted)  \n"
+                        f"📝 **VLM Evidence:** *{vlm_ev if vlm_ev else 'Bodily action uncertain'}*"
+                    )
+
                 clip_path = str(temp_clips_dir / f"clip_{vid_stem}_{idx}_{int(s_t)}_{int(e_t)}.mp4")
 
                 extracted = extract_video_clip(
@@ -337,32 +368,22 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
                     output_path=clip_path
                 )
 
-                if extracted and os.path.isfile(clip_path):
-                    # Pass raw bytes directly to ensure reliable stream playback
+                if extracted and os.path.isfile(clip_path) and os.path.getsize(clip_path) > 100:
                     try:
                         with open(clip_path, "rb") as f_c:
                             c_bytes = f_c.read()
-                        st.video(c_bytes, format="video/mp4")
+                        st.video(c_bytes, format="video/mp4", start_time=0)
                     except Exception:
-                        st.video(clip_path, format="video/mp4")
-
-                    st.markdown(f"⏱️ **Interval:** `[{s_t:.1f}s - {e_t:.1f}s]` | **Calibrated Conf:** `{conf_val:.3f}` | **VLM:** `{vlm_dec}`")
-                    if vlm_ev:
-                        st.caption(f"📝 *{vlm_ev}*")
+                        st.video(clip_path, format="video/mp4", start_time=0)
                 else:
                     st.warning(f"Could not extract sub-clip for interval [{s_t:.1f}s - {e_t:.1f}s].")
 
         # Optional Temporal Activation Curves inside expander
         timeline_csv = TIMELINES_DIR / f"{vid_stem}_timelines.csv"
         if timeline_csv.is_file():
-            with st.expander("📈 View Temporal Activation & Margin Curves", expanded=False):
+            with st.expander("📈 View Temporal Activation Data", expanded=False):
                 try:
                     df_time = pd.read_csv(timeline_csv)
-                    smooth_cols = [c for c in df_time.columns if c.endswith("_smoothed")]
-                    if smooth_cols:
-                        chart_df = df_time[["timestamp"] + smooth_cols].rename(
-                            columns={c: c.replace("_smoothed", "") for c in smooth_cols}
-                        ).set_index("timestamp")
-                        st.line_chart(chart_df)
+                    st.table(df_time.head(15))
                 except Exception as e:
-                    st.caption(f"Could not render activation curves: {e}")
+                    st.caption(f"Could not render activation data: {e}")
