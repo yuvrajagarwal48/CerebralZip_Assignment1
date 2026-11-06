@@ -1,0 +1,42 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 49.0,
+      "end_time": 54.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.234,
+          "confidence": 0.2527,
+          "mean_sim": 0.1956,
+          "max_sim": 0.2084,
+          "rel_margin": 0.0088,
+          "logoic_score": 0.0925,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen walking towards the house, which suggests they are attempting to enter the premises."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 379.0,
+      "end_time": 384.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2137,
+          "confidence": 0.24,
+          "mean_sim": 0.1892,
+          "max_sim": 0.201,
+          "rel_margin": -0.0099,
+          "logoic_score": 0.1422,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen walking towards the ground, which suggests they might have fallen."
+        }
+      ]
+    }
+  ]
+}

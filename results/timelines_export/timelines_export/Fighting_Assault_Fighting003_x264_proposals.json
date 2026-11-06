@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 61.0,
+      "end_time": 66.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1793,
+          "confidence": 0.1417,
+          "mean_sim": 0.1339,
+          "max_sim": 0.1455,
+          "rel_margin": -0.0065,
+          "logoic_score": 0.0522,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: There is no visible evidence of a fall in the frames."
+        }
+      ]
+    }
+  ]
+}

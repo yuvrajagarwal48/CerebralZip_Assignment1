@@ -1,0 +1,85 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 22.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.195,
+          "confidence": 0.154,
+          "mean_sim": 0.1534,
+          "max_sim": 0.1955,
+          "rel_margin": -0.0078,
+          "logoic_score": 0.0056,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the video is not falling, as they are standing and not in a position to fall."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 25.0,
+      "end_time": 33.0,
+      "hypotheses": [
+        {
+          "class": "Fighting/Physical Assault",
+          "ranking_score": 0.233,
+          "confidence": 0.2535,
+          "mean_sim": 0.1993,
+          "max_sim": 0.2139,
+          "rel_margin": 0.0025,
+          "logoic_score": 0.1461,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Fighting/Physical Assault | Status: SUPPORTED | Evidence: The individuals are engaged in a physical altercation, with one person holding a weapon and the other reacting with a defensive posture."
+        },
+        {
+          "class": "Falling",
+          "ranking_score": 0.205,
+          "confidence": 0.1714,
+          "mean_sim": 0.172,
+          "max_sim": 0.1898,
+          "rel_margin": -0.0083,
+          "logoic_score": 0.1126,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: There is no visible evidence of a fall in the video frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 37.0,
+      "end_time": 192.333,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2246,
+          "confidence": 0.2477,
+          "mean_sim": 0.1784,
+          "max_sim": 0.2162,
+          "rel_margin": 0.0024,
+          "logoic_score": 0.1132,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        },
+        {
+          "class": "Theft/Chain Snatching",
+          "ranking_score": 0.2335,
+          "confidence": 0.2544,
+          "mean_sim": 0.1987,
+          "max_sim": 0.2066,
+          "rel_margin": 0.0036,
+          "logoic_score": 0.174,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Theft/Chain Snatching | Status: SUPPORTED | Evidence: The individuals are seen interacting with each other, one of them is holding a bag, and the other is walking away with the bag, which suggests a theft or chain snatching scenario."
+        }
+      ]
+    }
+  ]
+}

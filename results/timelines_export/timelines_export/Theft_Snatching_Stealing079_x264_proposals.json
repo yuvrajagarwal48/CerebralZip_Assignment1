@@ -1,0 +1,80 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 17.0,
+      "end_time": 31.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2736,
+          "confidence": 0.2808,
+          "mean_sim": 0.2002,
+          "max_sim": 0.217,
+          "rel_margin": 0.044,
+          "logoic_score": 0.1046,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person on the motorcycle is riding towards the gate, which suggests an attempt to enter the property."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 38.0,
+      "end_time": 45.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2681,
+          "confidence": 0.2776,
+          "mean_sim": 0.197,
+          "max_sim": 0.2156,
+          "rel_margin": 0.0389,
+          "logoic_score": 0.1256,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person on the motorcycle is seen riding towards the gate, which suggests an attempt to enter the property."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 113.0,
+      "end_time": 145.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2771,
+          "confidence": 0.2866,
+          "mean_sim": 0.2103,
+          "max_sim": 0.2317,
+          "rel_margin": 0.0342,
+          "logoic_score": 0.2294,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is attempting to enter the gate, which is a common action for someone attempting to trespass."
+        }
+      ]
+    },
+    {
+      "proposal_id": 3,
+      "start_time": 165.0,
+      "end_time": 193.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2745,
+          "confidence": 0.285,
+          "mean_sim": 0.2064,
+          "max_sim": 0.2376,
+          "rel_margin": 0.0316,
+          "logoic_score": 0.2268,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person on the motorcycle is seen approaching the gate, which is open, and then they are seen riding away. This action suggests an attempt to enter the property."
+        }
+      ]
+    }
+  ]
+}

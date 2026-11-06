@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 8.6,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2116,
+          "confidence": 0.2366,
+          "mean_sim": 0.1781,
+          "max_sim": 0.1968,
+          "rel_margin": -0.0027,
+          "logoic_score": 0.0564,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen lying on the floor with their legs in the air, which is a clear indication of falling."
+        }
+      ]
+    }
+  ]
+}

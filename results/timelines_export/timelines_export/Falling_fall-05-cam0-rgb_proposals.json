@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 6.04,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2276,
+          "confidence": 0.2481,
+          "mean_sim": 0.1567,
+          "max_sim": 0.1815,
+          "rel_margin": 0.0251,
+          "logoic_score": 0.0463,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen falling onto the floor, which is visible in the frames."
+        }
+      ]
+    }
+  ]
+}

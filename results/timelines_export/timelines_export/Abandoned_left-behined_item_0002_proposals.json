@@ -1,0 +1,42 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 21.0,
+      "end_time": 43.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1926,
+          "confidence": 0.1481,
+          "mean_sim": 0.1439,
+          "max_sim": 0.1558,
+          "rel_margin": -0.0088,
+          "logoic_score": 0.244,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person is not falling, they are standing up and walking away."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 41.0,
+      "end_time": 46.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1736,
+          "confidence": 0.1302,
+          "mean_sim": 0.1273,
+          "max_sim": 0.1396,
+          "rel_margin": -0.0067,
+          "logoic_score": 0.016,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: REJECTED | Status: REJECTED | Evidence: The frames do not show any visible physical actions such as fire, smoke, flames, or rapid running."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 171.0,
+      "end_time": 179.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1601,
+          "confidence": 0.1103,
+          "mean_sim": 0.1057,
+          "max_sim": 0.1122,
+          "rel_margin": -0.0117,
+          "logoic_score": 0.1351,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: There are no visible physical actions such as falling, breaking objects, or rapid running in the frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 249.0,
+      "end_time": 288.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.3003,
+          "confidence": 0.3169,
+          "mean_sim": 0.186,
+          "max_sim": 0.2226,
+          "rel_margin": 0.0441,
+          "logoic_score": 0.7422,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Fire/Smoke | Status: SUPPORTED | Evidence: The smoke and fire are clearly visible in the frame, indicating a fire or smoke incident."
+        }
+      ]
+    }
+  ]
+}

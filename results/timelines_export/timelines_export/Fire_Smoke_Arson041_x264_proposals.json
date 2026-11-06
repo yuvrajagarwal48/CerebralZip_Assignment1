@@ -1,0 +1,97 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 29.0,
+      "end_time": 38.0,
+      "hypotheses": [
+        {
+          "class": "Running in a Restricted Zone",
+          "ranking_score": 0.2424,
+          "confidence": 0.2615,
+          "mean_sim": 0.2065,
+          "max_sim": 0.2174,
+          "rel_margin": 0.0053,
+          "logoic_score": 0.2093,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        },
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2274,
+          "confidence": 0.25,
+          "mean_sim": 0.2026,
+          "max_sim": 0.212,
+          "rel_margin": -0.0049,
+          "logoic_score": 0.1684,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person is seen walking towards a door, which suggests they are attempting to enter a restricted area."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 68.0,
+      "end_time": 77.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2437,
+          "confidence": 0.2628,
+          "mean_sim": 0.2026,
+          "max_sim": 0.2227,
+          "rel_margin": 0.0067,
+          "logoic_score": 0.2093,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen entering the building, which is not allowed, and then leaving, indicating an attempt to enter without authorization."
+        },
+        {
+          "class": "Fighting/Physical Assault",
+          "ranking_score": 0.2199,
+          "confidence": 0.2043,
+          "mean_sim": 0.1964,
+          "max_sim": 0.2059,
+          "rel_margin": -0.0089,
+          "logoic_score": 0.1723,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fighting/Physical Assault | Status: REJECTED | Evidence: There is no visible physical contact or struggle between the individuals in the video."
+        },
+        {
+          "class": "Running in a Restricted Zone",
+          "ranking_score": 0.2244,
+          "confidence": 0.2477,
+          "mean_sim": 0.2016,
+          "max_sim": 0.2155,
+          "rel_margin": -0.0078,
+          "logoic_score": 0.1567,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Running in a Restricted Zone | Status: UNCERTAIN | Evidence: The video does not provide enough information to determine if the person is running in a restricted zone."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 115.0,
+      "end_time": 125.133,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.2775,
+          "confidence": 0.2941,
+          "mean_sim": 0.1799,
+          "max_sim": 0.2433,
+          "rel_margin": 0.0321,
+          "logoic_score": 0.4384,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Fire/Smoke | Status: SUPPORTED | Evidence: The smoke and flames are clearly visible in the frame, indicating a fire or smoke incident."
+        }
+      ]
+    }
+  ]
+}

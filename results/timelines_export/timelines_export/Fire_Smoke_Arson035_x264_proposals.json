@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 20.0,
+      "end_time": 35.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.2317,
+          "confidence": 0.2583,
+          "mean_sim": 0.1643,
+          "max_sim": 0.2132,
+          "rel_margin": 0.0061,
+          "logoic_score": 0.3001,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: The frames do not show any visible flames or smoke, only light reflections and reflections of the vehicle's lights."
+        }
+      ]
+    }
+  ]
+}

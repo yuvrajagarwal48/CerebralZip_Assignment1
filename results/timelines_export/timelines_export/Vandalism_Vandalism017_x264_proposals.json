@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 5.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2384,
+          "confidence": 0.2575,
+          "mean_sim": 0.196,
+          "max_sim": 0.2126,
+          "rel_margin": 0.0091,
+          "logoic_score": 0.1515,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen walking towards the glass doors of the store, which suggests an attempt to enter."
+        }
+      ]
+    }
+  ]
+}

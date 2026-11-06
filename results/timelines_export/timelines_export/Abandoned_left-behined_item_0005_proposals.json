@@ -1,0 +1,80 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 6.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1775,
+          "confidence": 0.1231,
+          "mean_sim": 0.1243,
+          "max_sim": 0.1484,
+          "rel_margin": -0.0097,
+          "logoic_score": 0.1332,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the red hoodie is walking away from the bench, not falling."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 9.0,
+      "end_time": 15.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1837,
+          "confidence": 0.1429,
+          "mean_sim": 0.1315,
+          "max_sim": 0.148,
+          "rel_margin": -0.0119,
+          "logoic_score": 0.2527,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the red hoodie is not falling in the video frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 19.0,
+      "end_time": 30.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1804,
+          "confidence": 0.1259,
+          "mean_sim": 0.1223,
+          "max_sim": 0.1445,
+          "rel_margin": -0.009,
+          "logoic_score": 0.2096,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the red hoodie is not falling in the frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 3,
+      "start_time": 34.0,
+      "end_time": 39.333,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1985,
+          "confidence": 0.1382,
+          "mean_sim": 0.1095,
+          "max_sim": 0.1416,
+          "rel_margin": -0.0065,
+          "logoic_score": 0.6473,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the red hoodie is not falling, and there is no visible evidence of a fall in the frames."
+        }
+      ]
+    }
+  ]
+}

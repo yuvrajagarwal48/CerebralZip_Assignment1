@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 6.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "confidence": 0.3401,
+          "ranking_score": 0.3401,
+          "mean_sim": 0.1467,
+          "max_sim": 0.1572,
+          "rel_margin": 0.0172,
+          "logoic_score": 0.0472,
+          "vlm_decision": "PENDING",
+          "vlm_verified": null,
+          "vlm_evidence": null
+        }
+      ]
+    }
+  ]
+}

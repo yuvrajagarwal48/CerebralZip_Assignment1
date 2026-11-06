@@ -1,0 +1,42 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 9.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2234,
+          "confidence": 0.1844,
+          "mean_sim": 0.1755,
+          "max_sim": 0.1872,
+          "rel_margin": 0.0042,
+          "logoic_score": 0.22,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the yellow shirt is walking away from the bench, not falling."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 12.0,
+      "end_time": 35.067,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1932,
+          "confidence": 0.1516,
+          "mean_sim": 0.1507,
+          "max_sim": 0.183,
+          "rel_margin": -0.0084,
+          "logoic_score": 0.0613,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the yellow shirt is walking on the sidewalk, not falling."
+        }
+      ]
+    }
+  ]
+}

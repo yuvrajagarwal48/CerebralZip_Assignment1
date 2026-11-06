@@ -1,0 +1,21 @@
+# Core deep learning framework
+torch>=2.0.0
+torchvision>=0.15.0
+
+# HuggingFace Model Hub & Architectures (X-CLIP and Qwen2-VL)
+transformers>=4.40.0
+accelerate>=0.28.0
+qwen-vl-utils>=0.0.8
+
+# Computer vision and scientific computing
+opencv-python>=4.8.0
+numpy>=1.24.0
+scipy>=1.10.0
+pillow>=9.5.0
+
+# Interactive Web Application
+streamlit>=1.28.0
+
+# Utilities and progress
+tqdm>=4.65.0
+

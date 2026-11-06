@@ -1,0 +1,252 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 26.0,
+      "end_time": 57.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2411,
+          "confidence": 0.2585,
+          "mean_sim": 0.2058,
+          "max_sim": 0.222,
+          "rel_margin": 0.0074,
+          "logoic_score": 0.1235,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        },
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2299,
+          "confidence": 0.2506,
+          "mean_sim": 0.2047,
+          "max_sim": 0.2144,
+          "rel_margin": -0.0018,
+          "logoic_score": 0.1287,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        },
+        {
+          "class": "Theft/Chain Snatching",
+          "ranking_score": 0.2216,
+          "confidence": 0.2447,
+          "mean_sim": 0.2035,
+          "max_sim": 0.2136,
+          "rel_margin": -0.0092,
+          "logoic_score": 0.1234,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Theft/Chain Snatching | Status: SUPPORTED | Evidence: The car is parked in a parking lot, and a chain is visible on the ground near the car, suggesting that someone may have attempted to steal the car."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 111.0,
+      "end_time": 131.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2303,
+          "confidence": 0.2517,
+          "mean_sim": 0.2007,
+          "max_sim": 0.2069,
+          "rel_margin": 0.0005,
+          "logoic_score": 0.1586,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is bending over the car, which suggests they are attempting to gain access to the vehicle."
+        },
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2292,
+          "confidence": 0.251,
+          "mean_sim": 0.2005,
+          "max_sim": 0.2058,
+          "rel_margin": -0.0003,
+          "logoic_score": 0.1595,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 195.0,
+      "end_time": 200.0,
+      "hypotheses": [
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2328,
+          "confidence": 0.2037,
+          "mean_sim": 0.199,
+          "max_sim": 0.2044,
+          "rel_margin": 0.0065,
+          "logoic_score": 0.1096,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Abandoned Object | Status: REJECTED | Evidence: The object is not abandoned as it is actively engaged in the act of parking."
+        }
+      ]
+    },
+    {
+      "proposal_id": 3,
+      "start_time": 202.0,
+      "end_time": 208.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2273,
+          "confidence": 0.2479,
+          "mean_sim": 0.1994,
+          "max_sim": 0.2071,
+          "rel_margin": 0.0011,
+          "logoic_score": 0.0926,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The vehicle appears to be parked in an area designated for parking, and the person is not visible in the video, suggesting they may be trespassing or intruding into the parking area."
+        },
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2243,
+          "confidence": 0.2455,
+          "mean_sim": 0.1999,
+          "max_sim": 0.2044,
+          "rel_margin": -0.0011,
+          "logoic_score": 0.0868,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        }
+      ]
+    },
+    {
+      "proposal_id": 4,
+      "start_time": 362.0,
+      "end_time": 374.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2274,
+          "confidence": 0.2473,
+          "mean_sim": 0.1993,
+          "max_sim": 0.2012,
+          "rel_margin": 0.0037,
+          "logoic_score": 0.0739,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The vehicle is parked in a designated parking space, and there is no visible evidence of unauthorized activity such as intrusion or trespassing."
+        }
+      ]
+    },
+    {
+      "proposal_id": 5,
+      "start_time": 383.0,
+      "end_time": 392.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2279,
+          "confidence": 0.2478,
+          "mean_sim": 0.201,
+          "max_sim": 0.2047,
+          "rel_margin": 0.0024,
+          "logoic_score": 0.08,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The vehicle appears to be parked in an area designated for parking, and the person is not visible in the video, suggesting they may be trespassing or intruding into the parking area."
+        },
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2225,
+          "confidence": 0.244,
+          "mean_sim": 0.1999,
+          "max_sim": 0.2042,
+          "rel_margin": -0.0023,
+          "logoic_score": 0.0768,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        }
+      ]
+    },
+    {
+      "proposal_id": 6,
+      "start_time": 405.0,
+      "end_time": 433.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2331,
+          "confidence": 0.254,
+          "mean_sim": 0.2023,
+          "max_sim": 0.209,
+          "rel_margin": 0.0015,
+          "logoic_score": 0.1706,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        },
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2301,
+          "confidence": 0.2516,
+          "mean_sim": 0.2021,
+          "max_sim": 0.2095,
+          "rel_margin": -0.0009,
+          "logoic_score": 0.1579,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        },
+        {
+          "class": "Theft/Chain Snatching",
+          "ranking_score": 0.2163,
+          "confidence": 0.2398,
+          "mean_sim": 0.1994,
+          "max_sim": 0.2028,
+          "rel_margin": -0.0084,
+          "logoic_score": 0.0832,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Theft/Chain Snatching | Status: SUPPORTED | Evidence: The vehicle appears to be in motion, suggesting it is being driven away, which is a common method of theft."
+        }
+      ]
+    },
+    {
+      "proposal_id": 7,
+      "start_time": 448.0,
+      "end_time": 457.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2405,
+          "confidence": 0.2602,
+          "mean_sim": 0.2033,
+          "max_sim": 0.2116,
+          "rel_margin": 0.006,
+          "logoic_score": 0.2089,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person is attempting to enter the vehicle, which suggests an attempt to trespass or intrude."
+        },
+        {
+          "class": "Abandoned Object",
+          "ranking_score": 0.2286,
+          "confidence": 0.2525,
+          "mean_sim": 0.201,
+          "max_sim": 0.2059,
+          "rel_margin": -0.0049,
+          "logoic_score": 0.2334,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        }
+      ]
+    }
+  ]
+}

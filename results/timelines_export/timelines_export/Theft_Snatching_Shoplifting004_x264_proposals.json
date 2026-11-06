@@ -1,0 +1,61 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 1.0,
+      "end_time": 22.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1787,
+          "confidence": 0.2161,
+          "mean_sim": 0.1232,
+          "max_sim": 0.1469,
+          "rel_margin": -0.0065,
+          "logoic_score": 0.1071,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 27.0,
+      "end_time": 43.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1792,
+          "confidence": 0.2173,
+          "mean_sim": 0.1104,
+          "max_sim": 0.1525,
+          "rel_margin": -0.003,
+          "logoic_score": 0.1102,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 59.0,
+      "end_time": 80.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1941,
+          "confidence": 0.2351,
+          "mean_sim": 0.1102,
+          "max_sim": 0.136,
+          "rel_margin": 0.0018,
+          "logoic_score": 0.3978,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+        }
+      ]
+    }
+  ]
+}

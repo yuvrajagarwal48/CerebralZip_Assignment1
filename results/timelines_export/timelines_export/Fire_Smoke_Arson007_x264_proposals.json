@@ -1,0 +1,54 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 126.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1888,
+          "confidence": 0.1318,
+          "mean_sim": 0.1317,
+          "max_sim": 0.1493,
+          "rel_margin": -0.0008,
+          "logoic_score": 0.1237,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: REJECTED | Evidence: There are no visible flames or smoke in the frames."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 133.0,
+      "end_time": 208.4,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1849,
+          "confidence": 0.1176,
+          "mean_sim": 0.1175,
+          "max_sim": 0.1696,
+          "rel_margin": -0.0043,
+          "logoic_score": 0.1132,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: There are no visible physical actions such as falling, fire/smoke, rapid running, breaking objects, or flames/smoke in the frames."
+        },
+        {
+          "class": "Falling",
+          "ranking_score": 0.1974,
+          "confidence": 0.1381,
+          "mean_sim": 0.1401,
+          "max_sim": 0.1498,
+          "rel_margin": -0.0083,
+          "logoic_score": 0.3894,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: There are no visible physical actions such as falling, fire/smoke, rapid running, breaking objects, or flames/smoke in the frames."
+        }
+      ]
+    }
+  ]
+}

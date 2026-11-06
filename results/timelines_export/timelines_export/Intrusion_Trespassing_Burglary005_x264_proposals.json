@@ -1,0 +1,54 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 12.0,
+      "end_time": 23.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2586,
+          "confidence": 0.2751,
+          "mean_sim": 0.2109,
+          "max_sim": 0.2264,
+          "rel_margin": 0.0137,
+          "logoic_score": 0.2912,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen walking towards the door, which is a common action in attempting to enter a property. The person is also seen holding a door handle, which is a typical action when attempting to open a door."
+        },
+        {
+          "class": "Loitering",
+          "ranking_score": 0.2192,
+          "confidence": 0.2424,
+          "mean_sim": 0.2011,
+          "max_sim": 0.2048,
+          "rel_margin": -0.0075,
+          "logoic_score": 0.1029,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 28.0,
+      "end_time": 39.0,
+      "hypotheses": [
+        {
+          "class": "Intrusion/Trespassing",
+          "ranking_score": 0.2519,
+          "confidence": 0.2687,
+          "mean_sim": 0.1989,
+          "max_sim": 0.2098,
+          "rel_margin": 0.0189,
+          "logoic_score": 0.2204,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is standing in front of the door, which suggests they are attempting to enter the building. The presence of the doormat and the door handle also indicate they are in a residential area."
+        }
+      ]
+    }
+  ]
+}

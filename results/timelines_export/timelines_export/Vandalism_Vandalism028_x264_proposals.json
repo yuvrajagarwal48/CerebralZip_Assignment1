@@ -1,0 +1,42 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 50.0,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.1864,
+          "confidence": 0.2199,
+          "mean_sim": 0.1555,
+          "max_sim": 0.1594,
+          "rel_margin": -0.0123,
+          "logoic_score": 0.0876,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: The frames do not show any visible flames or smoke, only a dark area with a light source."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 64.0,
+      "end_time": 149.833,
+      "hypotheses": [
+        {
+          "class": "Fire/Smoke",
+          "ranking_score": 0.2116,
+          "confidence": 0.2394,
+          "mean_sim": 0.1667,
+          "max_sim": 0.1916,
+          "rel_margin": -0.0019,
+          "logoic_score": 0.1443,
+          "vlm_decision": "UNCERTAIN",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: The frames do not show any visible flames or smoke, only a white object moving around the car."
+        }
+      ]
+    }
+  ]
+}

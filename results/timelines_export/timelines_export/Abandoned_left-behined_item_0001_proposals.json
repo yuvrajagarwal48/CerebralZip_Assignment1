@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 29.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2083,
+          "confidence": 0.1198,
+          "mean_sim": 0.1168,
+          "max_sim": 0.1403,
+          "rel_margin": -0.0088,
+          "logoic_score": 0.8744,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the video is not falling, but rather climbing up the stairs."
+        }
+      ]
+    }
+  ]
+}

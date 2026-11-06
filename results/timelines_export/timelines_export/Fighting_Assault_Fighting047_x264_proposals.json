@@ -1,0 +1,61 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 33.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2257,
+          "confidence": 0.1375,
+          "mean_sim": 0.1335,
+          "max_sim": 0.1822,
+          "rel_margin": -0.0041,
+          "logoic_score": 0.7898,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The person in the video is not falling, but rather standing and walking around the garage."
+        }
+      ]
+    },
+    {
+      "proposal_id": 1,
+      "start_time": 48.0,
+      "end_time": 56.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2066,
+          "confidence": 0.1293,
+          "mean_sim": 0.1064,
+          "max_sim": 0.15,
+          "rel_margin": 0.0013,
+          "logoic_score": 0.6316,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The individuals in the video are not falling, and there is no visible evidence of a fall."
+        }
+      ]
+    },
+    {
+      "proposal_id": 2,
+      "start_time": 136.0,
+      "end_time": 145.0,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.1764,
+          "confidence": 0.1091,
+          "mean_sim": 0.1028,
+          "max_sim": 0.1147,
+          "rel_margin": -0.0008,
+          "logoic_score": 0.2524,
+          "vlm_decision": "REJECTED",
+          "vlm_verified": false,
+          "vlm_evidence": "Class: Falling | Status: REJECTED | Evidence: The video does not show any visible physical actions such as falling, breaking objects, or rapid running."
+        }
+      ]
+    }
+  ]
+}

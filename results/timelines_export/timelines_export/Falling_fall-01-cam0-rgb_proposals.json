@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "proposal_id": 0,
+      "start_time": 0.0,
+      "end_time": 6.4,
+      "hypotheses": [
+        {
+          "class": "Falling",
+          "ranking_score": 0.2142,
+          "confidence": 0.2385,
+          "mean_sim": 0.158,
+          "max_sim": 0.1764,
+          "rel_margin": 0.0124,
+          "logoic_score": 0.0473,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen falling to the ground, which is clearly visible in the video frames."
+        }
+      ]
+    }
+  ]
+}

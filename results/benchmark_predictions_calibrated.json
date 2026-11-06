@@ -1,0 +1,453 @@
+{
+  "Abandoned_left-behined_item_0001.mp4": [],
+  "Abandoned_left-behined_item_0002.mp4": [],
+  "Abandoned_left-behined_item_0003.mp4": [],
+  "Abandoned_left-behined_item_0004.mp4": [],
+  "Abandoned_left-behined_item_0005.mp4": [],
+  "Falling_fall-01-cam0-rgb.mp4": [
+    {
+      "start_time": 0.0,
+      "end_time": 6.0,
+      "class": "Falling",
+      "confidence": 0.3186,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen falling to the ground, which is clearly visible in the video frames."
+    }
+  ],
+  "Falling_fall-02-cam0-rgb.mp4": [
+    {
+      "start_time": 0.0,
+      "end_time": 4.0,
+      "class": "Falling",
+      "confidence": 0.3228,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is lying on the floor with their legs extended and arms outstretched, which is a common posture when falling."
+    }
+  ],
+  "Falling_fall-03-cam0-rgb.mp4": [
+    {
+      "start_time": 1.0,
+      "end_time": 8.5,
+      "class": "Falling",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen lying on the floor with their legs in the air, which is a clear indication of falling."
+    }
+  ],
+  "Falling_fall-04-cam0-rgb.mp4": [],
+  "Falling_fall-05-cam0-rgb.mp4": [
+    {
+      "start_time": 2.0,
+      "end_time": 6.0,
+      "class": "Falling",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen falling onto the floor, which is visible in the frames."
+    }
+  ],
+  "Fighting_Assault_Assault006_x264.mp4": [],
+  "Fighting_Assault_Assault011_x264.mp4": [],
+  "Fighting_Assault_Fighting003_x264.mp4": [],
+  "Fighting_Assault_Fighting047_x264.mp4": [],
+  "Fire_Smoke_Arson007_x264.mp4": [],
+  "Fire_Smoke_Arson022_x264.mp4": [
+    {
+      "start_time": 249.0,
+      "end_time": 288.0,
+      "class": "Fire/Smoke",
+      "confidence": 0.6101,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Fire/Smoke | Status: SUPPORTED | Evidence: The smoke and fire are clearly visible in the frame, indicating a fire or smoke incident."
+    }
+  ],
+  "Fire_Smoke_Arson035_x264.mp4": [
+    {
+      "start_time": 21.5,
+      "end_time": 33.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: The frames do not show any visible flames or smoke, only light reflections and reflections of the vehicle's lights."
+    }
+  ],
+  "Fire_Smoke_Arson041_x264.mp4": [
+    {
+      "start_time": 28.0,
+      "end_time": 39.0,
+      "class": "Running in a Restricted Zone",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 29.0,
+      "end_time": 39.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.2861,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person is seen walking towards a door, which suggests they are attempting to enter a restricted area."
+    },
+    {
+      "start_time": 67.0,
+      "end_time": 77.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen entering the building, which is not allowed, and then leaving, indicating an attempt to enter without authorization."
+    },
+    {
+      "start_time": 69.5,
+      "end_time": 76.0,
+      "class": "Running in a Restricted Zone",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Running in a Restricted Zone | Status: UNCERTAIN | Evidence: The video does not provide enough information to determine if the person is running in a restricted zone."
+    },
+    {
+      "start_time": 116.0,
+      "end_time": 125.0,
+      "class": "Fire/Smoke",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Fire/Smoke | Status: SUPPORTED | Evidence: The smoke and flames are clearly visible in the frame, indicating a fire or smoke incident."
+    }
+  ],
+  "Intrusion_Trespassing_Burglary005_x264.mp4": [
+    {
+      "start_time": 11.0,
+      "end_time": 23.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen walking towards the door, which is a common action in attempting to enter a property. The person is also seen holding a door handle, which is a typical action when attempting to open a door."
+    },
+    {
+      "start_time": 16.5,
+      "end_time": 21.0,
+      "class": "Loitering",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 27.5,
+      "end_time": 40.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is standing in front of the door, which suggests they are attempting to enter the building. The presence of the doormat and the door handle also indicate they are in a residential area."
+    }
+  ],
+  "Intrusion_Trespassing_Burglary061_x264.mp4": [
+    {
+      "start_time": 139.0,
+      "end_time": 146.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.0888,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+    }
+  ],
+  "Intrusion_Trespassing_Burglary076_x264.mp4": [
+    {
+      "start_time": 48.0,
+      "end_time": 55.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen walking towards the house, which suggests they are attempting to enter the premises."
+    },
+    {
+      "start_time": 380.5,
+      "end_time": 384.0,
+      "class": "Falling",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen walking towards the ground, which suggests they might have fallen."
+    }
+  ],
+  "Intrusion_Trespassing_Burglary079_x264.mp4": [
+    {
+      "start_time": 25.0,
+      "end_time": 52.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 37.0,
+      "end_time": 58.0,
+      "class": "Abandoned Object",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 39.0,
+      "end_time": 50.0,
+      "class": "Theft/Chain Snatching",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Theft/Chain Snatching | Status: SUPPORTED | Evidence: The car is parked in a parking lot, and a chain is visible on the ground near the car, suggesting that someone may have attempted to steal the car."
+    },
+    {
+      "start_time": 110.0,
+      "end_time": 132.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is bending over the car, which suggests they are attempting to gain access to the vehicle."
+    },
+    {
+      "start_time": 110.0,
+      "end_time": 131.0,
+      "class": "Abandoned Object",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 201.0,
+      "end_time": 209.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The vehicle appears to be parked in an area designated for parking, and the person is not visible in the video, suggesting they may be trespassing or intruding into the parking area."
+    },
+    {
+      "start_time": 202.0,
+      "end_time": 209.0,
+      "class": "Abandoned Object",
+      "confidence": 0.2556,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 361.0,
+      "end_time": 375.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The vehicle is parked in a designated parking space, and there is no visible evidence of unauthorized activity such as intrusion or trespassing."
+    },
+    {
+      "start_time": 382.0,
+      "end_time": 393.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The vehicle appears to be parked in an area designated for parking, and the person is not visible in the video, suggesting they may be trespassing or intruding into the parking area."
+    },
+    {
+      "start_time": 385.0,
+      "end_time": 392.0,
+      "class": "Abandoned Object",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 404.0,
+      "end_time": 434.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 410.0,
+      "end_time": 433.0,
+      "class": "Abandoned Object",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 412.0,
+      "end_time": 419.0,
+      "class": "Theft/Chain Snatching",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Theft/Chain Snatching | Status: SUPPORTED | Evidence: The vehicle appears to be in motion, suggesting it is being driven away, which is a common method of theft."
+    },
+    {
+      "start_time": 448.0,
+      "end_time": 458.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.3839,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person is attempting to enter the vehicle, which suggests an attempt to trespass or intrude."
+    },
+    {
+      "start_time": 448.0,
+      "end_time": 456.0,
+      "class": "Abandoned Object",
+      "confidence": 0.2367,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    }
+  ],
+  "Theft_Snatching_Shoplifting004_x264.mp4": [
+    {
+      "start_time": 1.5,
+      "end_time": 20.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+    },
+    {
+      "start_time": 28.0,
+      "end_time": 41.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+    },
+    {
+      "start_time": 58.0,
+      "end_time": 79.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: There is no visible smoke or fire in the frames."
+    }
+  ],
+  "Theft_Snatching_Shoplifting007_x264.mp4": [],
+  "Theft_Snatching_Shoplifting020_x264.mp4": [
+    {
+      "start_time": 24.0,
+      "end_time": 29.5,
+      "class": "Fighting/Physical Assault",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Fighting/Physical Assault | Status: SUPPORTED | Evidence: The individuals are engaged in a physical altercation, with one person holding a weapon and the other reacting with a defensive posture."
+    },
+    {
+      "start_time": 38.0,
+      "end_time": 192.0,
+      "class": "Falling",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class was not explicitly referenced in VLM output; preserved as uncertain."
+    },
+    {
+      "start_time": 81.0,
+      "end_time": 88.0,
+      "class": "Theft/Chain Snatching",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Theft/Chain Snatching | Status: SUPPORTED | Evidence: The individuals are seen interacting with each other, one of them is holding a bag, and the other is walking away with the bag, which suggests a theft or chain snatching scenario."
+    }
+  ],
+  "Theft_Snatching_Stealing079_x264.mp4": [
+    {
+      "start_time": 16.0,
+      "end_time": 32.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person on the motorcycle is riding towards the gate, which suggests an attempt to enter the property."
+    },
+    {
+      "start_time": 37.0,
+      "end_time": 46.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person on the motorcycle is seen riding towards the gate, which suggests an attempt to enter the property."
+    },
+    {
+      "start_time": 113.0,
+      "end_time": 146.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.633,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is attempting to enter the gate, which is a common action for someone attempting to trespass."
+    },
+    {
+      "start_time": 164.0,
+      "end_time": 194.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.4859,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person on the motorcycle is seen approaching the gate, which is open, and then they are seen riding away. This action suggests an attempt to enter the property."
+    }
+  ],
+  "Vandalism_Vandalism015_x264.mp4": [],
+  "Vandalism_Vandalism017_x264.mp4": [
+    {
+      "start_time": 0.0,
+      "end_time": 6.0,
+      "class": "Intrusion/Trespassing",
+      "confidence": 0.3993,
+      "vlm_decision": "SUPPORTED",
+      "vlm_verified": true,
+      "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen walking towards the glass doors of the store, which suggests an attempt to enter."
+    }
+  ],
+  "Vandalism_Vandalism028_x264.mp4": [
+    {
+      "start_time": 0.0,
+      "end_time": 49.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.0887,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: The frames do not show any visible flames or smoke, only a dark area with a light source."
+    },
+    {
+      "start_time": 63.0,
+      "end_time": 149.5,
+      "class": "Fire/Smoke",
+      "confidence": 0.413,
+      "vlm_decision": "UNCERTAIN",
+      "vlm_verified": false,
+      "vlm_evidence": "Class: Fire/Smoke | Status: UNCERTAIN | Evidence: The frames do not show any visible flames or smoke, only a white object moving around the car."
+    }
+  ],
+  "Vandalism_Vandalism036_x264.mp4": []
+}
