@@ -161,10 +161,22 @@ python pipeline/runner.py
 
 ### 2. Interactive Web Application (Streamlit)
 
-Launch the interactive UI to upload videos, inspect the 6-stage decision process, view tabular predictions and activation curves, and automatically cut/download video clips of detected intervals:
+Launch the interactive UI to upload videos (or enter local/Kaggle video paths), inspect the 6-stage decision process, view tabular predictions, and automatically cut and play browser-native H.264 video clips of detected intervals:
 
 ```bash
 streamlit run streamlit_app.py
+```
+
+*When running on Kaggle or a cloud VM via Localtunnel or Cloudflare Tunnel:*
+```bash
+# Start Streamlit in the background
+streamlit run streamlit_app.py &
+
+# Option A: Expose via localtunnel
+npx localtunnel --port 8501
+
+# Option B: Expose via Cloudflare Tunnel (recommended, no interstitial page):
+# cloudflared tunnel --url http://localhost:8501
 ```
 
 ---
