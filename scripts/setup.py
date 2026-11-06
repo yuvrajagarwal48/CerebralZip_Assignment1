@@ -86,7 +86,20 @@ def download_xclip_model(model_name: str = "microsoft/xclip-base-patch32"):
         inputs = processor(text=test_text, return_tensors="pt", padding=True)
         with torch.no_grad():
             text_features = model.get_text_features(**inputs)
-        logger.info(f"X-CLIP pre-caching verified successfully! Text features shape: {text_features.shape}")
+
+        # Robustly extract tensor shape whether get_text_features returns a Tensor or ModelOutput
+        if isinstance(text_features, torch.Tensor):
+            feat_shape = text_features.shape
+        elif hasattr(text_features, "pooler_output") and text_features.pooler_output is not None:
+            feat_shape = text_features.pooler_output.shape
+        elif hasattr(text_features, "text_embeds") and text_features.text_embeds is not None:
+            feat_shape = text_features.text_embeds.shape
+        elif isinstance(text_features, (tuple, list)) and len(text_features) > 0:
+            feat_shape = text_features[0].shape
+        else:
+            feat_shape = "(extracted)"
+
+        logger.info(f"X-CLIP pre-caching verified successfully! Text features shape: {feat_shape}")
 
     except Exception as e:
         logger.error(f"Error caching X-CLIP model '{model_name}': {e}", exc_info=True)

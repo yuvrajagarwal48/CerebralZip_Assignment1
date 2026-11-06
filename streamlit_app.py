@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 streamlit_app.py: Interactive Zero-Shot Temporal Action Localization Web Demo.
-Accepts video uploads or benchmark sample selection, visualizes the 7-stage
+Accepts video uploads or local path selection, visualizes the 6-stage
 pipeline decision workflow, presents calibrated prediction intervals, and
 automatically extracts and plays video sub-clips of each detected activity.
 """
@@ -39,46 +39,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling
-st.markdown("""
-<style>
-    .main-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: #1E3A8A;
-        margin-bottom: 0.2rem;
-    }
-    .sub-title {
-        font-size: 1.05rem;
-        color: #4B5563;
-        margin-bottom: 1.5rem;
-    }
-    .step-card {
-        background-color: #F8FAFC;
-        border-left: 4px solid #3B82F6;
-        padding: 10px 15px;
-        border-radius: 4px;
-        margin-bottom: 10px;
-    }
-    .badge-supported {
-        background-color: #DEF7EC;
-        color: #03543F;
-        padding: 3px 8px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.85rem;
-    }
-    .badge-uncertain {
-        background-color: #FEF08A;
-        color: #713F12;
-        padding: 3px 8px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.85rem;
-    }
-</style>
-""", unsafe_allow_html=True)
-
 
 def extract_video_clip(
     src_video_path: str,
@@ -103,7 +63,6 @@ def extract_video_clip(
         cap.release()
         return False
 
-    # Use mp4v or avc1 codec for wide browser compatibility
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
@@ -123,8 +82,7 @@ def extract_video_clip(
 
 # Sidebar Configuration & Specifications
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/cctv.png", width=64)
-    st.title("TAL Architecture")
+    st.title("🎯 TAL Architecture")
     st.markdown("**Dual-Stream Zero-Shot Temporal Action Localization**")
 
     st.markdown("---")
@@ -145,21 +103,26 @@ with st.sidebar:
         st.markdown(f"• `{cls_name}`")
 
 
-# Header
-st.markdown('<div class="main-title">🎯 Zero-Shot Temporal Action Localization</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">Automated video surveillance activity detection, temporal interval bounding, and vision-language verification.</div>', unsafe_allow_html=True)
+# Page Title
+st.title("🎯 Zero-Shot Temporal Action Localization")
+st.caption("Automated video surveillance activity detection, temporal interval bounding, and vision-language verification.")
 
-# Input Mode Tabs: Upload vs. Benchmark Dataset
-tab_upload, tab_benchmark = st.tabs(["📤 Upload Surveillance Video", "📂 Select from Benchmark Suite"])
+# Video Selection: NO video preloaded by default
+st.markdown("### 1. Select or Upload Video")
+input_mode = st.radio(
+    "Choose video input method:",
+    options=["Upload Video File", "Select from Benchmark Dataset", "Enter Video File Path"],
+    horizontal=True
+)
 
 video_to_process: Optional[str] = None
 video_display_name: str = ""
 
-with tab_upload:
+if input_mode == "Upload Video File":
     uploaded_file = st.file_uploader(
-        "Upload a video file (MP4, AVI, MOV)",
+        "Upload a surveillance video (.mp4, .avi, .mov)",
         type=["mp4", "avi", "mov", "mkv"],
-        help="Upload surveillance or CCTV footage for automated zero-shot activity detection."
+        help="Upload CCTV or surveillance footage to analyze."
     )
     if uploaded_file is not None:
         tfile = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
@@ -168,76 +131,71 @@ with tab_upload:
         video_to_process = tfile.name
         video_display_name = uploaded_file.name
 
-with tab_benchmark:
+elif input_mode == "Select from Benchmark Dataset":
     if VIDEOS_DIR.is_dir():
         benchmark_files = sorted(list(VIDEOS_DIR.glob("*.mp4")))
-        if benchmark_files:
-            selected_vid = st.selectbox(
-                "Choose a benchmark video:",
-                options=[vf.name for vf in benchmark_files]
-            )
-            if selected_vid and video_to_process is None:
-                video_to_process = str(VIDEOS_DIR / selected_vid)
-                video_display_name = selected_vid
-        else:
-            st.info("No benchmark videos found in 'cerebralzip_test_data/videos/'.")
+        file_options = ["-- None (Select a video) --"] + [vf.name for vf in benchmark_files]
+        selected_vid = st.selectbox("Choose a benchmark video:", options=file_options, index=0)
+        if selected_vid != "-- None (Select a video) --":
+            video_to_process = str(VIDEOS_DIR / selected_vid)
+            video_display_name = selected_vid
     else:
-        st.info("Benchmark videos folder not detected.")
+        st.info(f"Benchmark videos folder '{VIDEOS_DIR}' not found.")
 
-# Display Video and Pipeline Preview
-if video_to_process is not None:
+elif input_mode == "Enter Video File Path":
+    entered_path = st.text_input(
+        "Path to video file:",
+        placeholder="e.g. cerebralzip_test_data/videos/Fighting_Assault_Fighting003_x264.mp4"
+    )
+    if entered_path.strip():
+        p = Path(entered_path.strip())
+        if p.is_file():
+            video_to_process = str(p)
+            video_display_name = p.name
+        else:
+            st.error(f"File not found: '{entered_path}'")
+
+# If no video has been chosen, show guide and stop
+if not video_to_process:
+    st.info("👆 Please upload a video file or select a video from the options above to begin.")
+else:
     st.markdown("---")
+    st.markdown("### 2. Video Preview & Metadata")
     col_vid, col_steps = st.columns([1.2, 1.0])
 
     with col_vid:
-        st.subheader("Input Video Preview")
         st.video(video_to_process)
-
-        # Video Metadata Preview
         try:
             meta = VideoMetadata.extract(video_to_process)
-            m_col1, m_col2, m_col3 = st.columns(3)
-            m_col1.metric("Duration", f"{meta.duration_sec:.1f}s")
-            m_col2.metric("FPS", f"{meta.fps:.1f}")
-            m_col3.metric("Resolution", f"{meta.resolution[0]}x{meta.resolution[1]}")
-        except Exception:
-            pass
+            m1, m2, m3 = st.columns(3)
+            m1.metric("Duration", f"{meta.duration_sec:.1f}s")
+            m2.metric("FPS", f"{meta.fps:.1f}")
+            m3.metric("Resolution", f"{meta.resolution[0]}x{meta.resolution[1]}")
+        except Exception as e:
+            st.caption(f"Could not read metadata: {e}")
 
     with col_steps:
-        st.subheader("Pipeline Decision Workflow")
-        st.markdown(r"""
-        <div class="step-card">
-            <strong>Stage 1: Temporal Windowing</strong><br>
-            Extracts sliding 4.0s clips at 1.0s stride with 8-frame uniform sampling.
-        </div>
-        <div class="step-card">
-            <strong>Stage 2: X-CLIP Action Embedding</strong><br>
-            Computes zero-shot dot-product similarity against pre-encoded text descriptions.
-        </div>
-        <div class="step-card">
-            <strong>Stage 3: Relative Class Evidence</strong><br>
-            Derives competitive margin \(R_c(t) = S_c(t) - \max_{j \neq c} S_j(t)\) with Gaussian temporal smoothing.
-        </div>
-        <div class="step-card">
-            <strong>Stage 4: LogOIC Contrast & Calibration</strong><br>
-            Calculates inner/outer context ratio and multi-modal dynamic calibrated confidence.
-        </div>
-        <div class="step-card">
-            <strong>Stage 5: Class-Wise NMS & Grouping</strong><br>
-            Suppresses overlapping duplicates and clusters cross-class hypotheses.
-        </div>
-        <div class="step-card">
-            <strong>Stage 6: Qwen2-VL Grounded Verification</strong><br>
-            Screens physical bodily action evidence, pruning false alarms.
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("#### Pipeline Decision Workflow")
+        with st.expander("Stage 1: Temporal Windowing", expanded=True):
+            st.write("Extracts sliding 4.0s clips at 1.0s stride with 8-frame uniform sampling.")
+        with st.expander("Stage 2: X-CLIP Action Embedding", expanded=False):
+            st.write("Computes zero-shot dot-product similarity against pre-encoded text descriptions.")
+        with st.expander("Stage 3: Relative Class Evidence", expanded=False):
+            st.write(r"Derives competitive margin $R_c(t) = S_c(t) - \max_{j \neq c} S_j(t)$ with Gaussian smoothing ($\sigma=0.5$).")
+        with st.expander("Stage 4: LogOIC Contrast & Calibration", expanded=False):
+            st.write("Calculates inner/outer context ratio and multi-modal dynamic calibrated confidence.")
+        with st.expander("Stage 5: Class-Wise NMS & Grouping", expanded=False):
+            st.write("Suppresses overlapping duplicates and clusters cross-class hypotheses.")
+        with st.expander("Stage 6: Qwen2-VL Grounded Verification", expanded=False):
+            st.write("Screens physical bodily action evidence, pruning false alarms.")
 
     # Execution Action
     st.markdown("---")
+    st.markdown("### 3. Pipeline Execution")
     if st.button("🚀 Run Temporal Action Localization Pipeline", type="primary", use_container_width=True):
         progress_bar = st.progress(0, text="Initializing Pipeline & Pre-encoding Text Descriptions...")
-
         status_box = st.status("Running Zero-Shot Detection Pipeline...", expanded=True)
+
         try:
             start_time = time.time()
             status_box.write("⚙️ Stage 1 & 2: Chunking video and extracting X-CLIP action embeddings...")
@@ -249,14 +207,13 @@ if video_to_process is not None:
             status_box.write("🧠 Stage 5 & 6: Applying Class-Wise NMS and executing Qwen-VL action verification...")
             progress_bar.progress(75, text="Running Qwen2-VL Grounded Verification...")
 
-            # Call Master Pipeline
+            # Run prediction
             result = predict_video(video_to_process)
             elapsed = time.time() - start_time
 
             progress_bar.progress(100, text=f"Processing Complete in {elapsed:.2f}s!")
             status_box.update(label=f"✅ Video processing complete ({elapsed:.2f}s)", state="complete", expanded=False)
 
-            # Store in session state for persistence
             st.session_state["last_result"] = result
             st.session_state["last_video"] = video_to_process
             st.session_state["last_elapsed"] = elapsed
@@ -272,7 +229,7 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
     activities = res.get("activities", [])
 
     st.markdown("---")
-    st.header("📊 Detection & Localization Results")
+    st.markdown("### 4. Detection & Localization Results")
 
     # Metrics Summary Cards
     col_m1, col_m2, col_m3, col_m4 = st.columns(4)
@@ -299,11 +256,11 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
             })
         st.dataframe(pd.DataFrame(table_rows), use_container_width=True)
 
-        # Plot Activation Timeline Curves if available
+        # Plot Activation Timeline Curves if CSV available
         vid_stem = Path(video_to_process).stem
         timeline_csv = TIMELINES_DIR / f"{vid_stem}_timelines.csv"
         if timeline_csv.is_file():
-            st.subheader("📈 Temporal Activation & Margin Curves")
+            st.markdown("#### Temporal Activation & Margin Curves")
             try:
                 df_time = pd.read_csv(timeline_csv)
                 smooth_cols = [c for c in df_time.columns if c.endswith("_smoothed")]
@@ -317,8 +274,8 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
 
         # Clipped Video Segment Extraction & Playback
         st.markdown("---")
-        st.subheader("🎬 Clipped Video Segments of Detected Activities")
-        st.markdown("Individual video segments extracted according to localized temporal boundaries:")
+        st.markdown("### 5. Clipped Video Segments of Detected Activities")
+        st.caption("Individual video segments extracted according to localized temporal boundaries:")
 
         clip_cols = st.columns(min(3, max(1, len(activities))))
         temp_clips_dir = Path(tempfile.gettempdir()) / "tal_extracted_clips"
@@ -336,7 +293,6 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
                 st.markdown(f"**Event #{idx + 1}: {cls_title}**")
                 clip_path = str(temp_clips_dir / f"clip_{vid_stem}_{idx}_{int(s_t)}_{int(e_t)}.mp4")
 
-                # Extract sub-clip
                 extracted = extract_video_clip(
                     src_video_path=video_to_process,
                     start_sec=s_t,
@@ -346,15 +302,10 @@ if "last_result" in st.session_state and st.session_state.get("last_video") == v
 
                 if extracted and os.path.exists(clip_path):
                     st.video(clip_path)
-                    st.caption(f"⏱️ Interval: **[{s_t:.1f}s - {e_t:.1f}s]** | Conf: **{conf_val:.3f}**")
-                    if vlm_dec == "SUPPORTED":
-                        st.markdown('<span class="badge-supported">✓ VLM SUPPORTED</span>', unsafe_allow_html=True)
-                    else:
-                        st.markdown(f'<span class="badge-uncertain">~ VLM {vlm_dec}</span>', unsafe_allow_html=True)
+                    st.caption(f"⏱️ Interval: **[{s_t:.1f}s - {e_t:.1f}s]** | Conf: **{conf_val:.3f}** | VLM: **{vlm_dec}**")
                     if act.get("vlm_evidence"):
                         st.caption(f"📝 *{act.get('vlm_evidence')}*")
 
-                    # Download button
                     with open(clip_path, "rb") as f_clip:
                         st.download_button(
                             label=f"⬇️ Download Event #{idx + 1} Clip",
