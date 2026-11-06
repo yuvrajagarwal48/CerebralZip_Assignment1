@@ -1,0 +1,532 @@
+{
+  "vlm_decision_audit": {
+    "SUPPORTED": 0,
+    "UNCERTAIN": 0,
+    "REJECTED": 0,
+    "TOTAL": 1,
+    "PENDING": 1
+  },
+  "pure_xclip": {
+    "summary": {
+      "evaluated_videos": 30,
+      "gt_videos": 30,
+      "total_ground_truths": 35,
+      "total_predictions": 1,
+      "target_anchored_hits": 1,
+      "true_false_alarms_count": 0,
+      "co_occurring_extras_count": 0
+    },
+    "target_anchored_evaluation": {
+      "hit_accuracy": 0.0333,
+      "anchored_precision": 1.0,
+      "anchored_f1_score": 0.0645,
+      "macro_f1_score": 0.0476,
+      "per_class_metrics": {
+        "Fighting/Physical Assault": {
+          "gt_videos": 4,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Falling": {
+          "gt_videos": 5,
+          "pred_videos": 1,
+          "video_precision": 1.0,
+          "video_recall": 0.2,
+          "video_f1": 0.3333
+        },
+        "Fire/Smoke": {
+          "gt_videos": 4,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Intrusion/Trespassing": {
+          "gt_videos": 4,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Loitering": {
+          "gt_videos": 0,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Vandalism": {
+          "gt_videos": 4,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Theft/Chain Snatching": {
+          "gt_videos": 4,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Crowd Formation/Unusual Gathering": {
+          "gt_videos": 0,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Running in a Restricted Zone": {
+          "gt_videos": 0,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Abandoned Object": {
+          "gt_videos": 5,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        }
+      }
+    },
+    "temporal_localization": {
+      "strict_tp": 0,
+      "strict_fp": 1,
+      "strict_fn": 35,
+      "strict_precision_05": 0.0,
+      "strict_recall_05": 0.0,
+      "strict_f1_05": 0.0,
+      "vicinity_tp": 1,
+      "vicinity_precision": 1.0,
+      "vicinity_recall": 0.0286,
+      "vicinity_f1": 0.0556,
+      "mean_boundary_mae_sec": 1.7
+    },
+    "confusion_and_overlap": {
+      "top_confused_pairs": [],
+      "co_occurring_causal_pairs": [],
+      "interval_confusion_matrix": {
+        "Fighting/Physical Assault": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 4
+        },
+        "Falling": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 1,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 4
+        },
+        "Fire/Smoke": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 4
+        },
+        "Intrusion/Trespassing": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 4
+        },
+        "Loitering": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        },
+        "Vandalism": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 7
+        },
+        "Theft/Chain Snatching": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 6
+        },
+        "Crowd Formation/Unusual Gathering": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        },
+        "Running in a Restricted Zone": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        },
+        "Abandoned Object": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 5
+        },
+        "Background (Spurious)": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        }
+      }
+    }
+  },
+  "full_pipeline": {
+    "summary": {
+      "evaluated_videos": 30,
+      "gt_videos": 30,
+      "total_ground_truths": 35,
+      "total_predictions": 45,
+      "target_anchored_hits": 11,
+      "true_false_alarms_count": 11,
+      "co_occurring_extras_count": 16
+    },
+    "target_anchored_evaluation": {
+      "hit_accuracy": 0.3667,
+      "anchored_precision": 0.5,
+      "anchored_f1_score": 0.4231,
+      "macro_f1_score": 0.3651,
+      "per_class_metrics": {
+        "Fighting/Physical Assault": {
+          "gt_videos": 4,
+          "pred_videos": 1,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Falling": {
+          "gt_videos": 5,
+          "pred_videos": 6,
+          "video_precision": 1.0,
+          "video_recall": 0.8,
+          "video_f1": 0.8889
+        },
+        "Fire/Smoke": {
+          "gt_videos": 4,
+          "pred_videos": 6,
+          "video_precision": 0.5,
+          "video_recall": 0.75,
+          "video_f1": 0.6
+        },
+        "Intrusion/Trespassing": {
+          "gt_videos": 4,
+          "pred_videos": 6,
+          "video_precision": 0.6,
+          "video_recall": 0.75,
+          "video_f1": 0.6667
+        },
+        "Loitering": {
+          "gt_videos": 0,
+          "pred_videos": 1,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Vandalism": {
+          "gt_videos": 4,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Theft/Chain Snatching": {
+          "gt_videos": 4,
+          "pred_videos": 2,
+          "video_precision": 1.0,
+          "video_recall": 0.25,
+          "video_f1": 0.4
+        },
+        "Crowd Formation/Unusual Gathering": {
+          "gt_videos": 0,
+          "pred_videos": 0,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Running in a Restricted Zone": {
+          "gt_videos": 0,
+          "pred_videos": 1,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        },
+        "Abandoned Object": {
+          "gt_videos": 5,
+          "pred_videos": 1,
+          "video_precision": 0.0,
+          "video_recall": 0.0,
+          "video_f1": 0.0
+        }
+      }
+    },
+    "temporal_localization": {
+      "strict_tp": 2,
+      "strict_fp": 43,
+      "strict_fn": 33,
+      "strict_precision_05": 0.0444,
+      "strict_recall_05": 0.0571,
+      "strict_f1_05": 0.05,
+      "vicinity_tp": 6,
+      "vicinity_precision": 0.1333,
+      "vicinity_recall": 0.1714,
+      "vicinity_f1": 0.15,
+      "mean_boundary_mae_sec": 2.16
+    },
+    "confusion_and_overlap": {
+      "top_confused_pairs": [],
+      "co_occurring_causal_pairs": [
+        {
+          "actual_class": "Fire/Smoke",
+          "predicted_class": "Intrusion/Trespassing",
+          "count": 1
+        },
+        {
+          "actual_class": "Intrusion/Trespassing",
+          "predicted_class": "Fire/Smoke",
+          "count": 1
+        },
+        {
+          "actual_class": "Theft/Chain Snatching",
+          "predicted_class": "Intrusion/Trespassing",
+          "count": 1
+        },
+        {
+          "actual_class": "Vandalism",
+          "predicted_class": "Fire/Smoke",
+          "count": 1
+        }
+      ],
+      "interval_confusion_matrix": {
+        "Fighting/Physical Assault": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 4
+        },
+        "Falling": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 4,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 1
+        },
+        "Fire/Smoke": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 1,
+          "Intrusion/Trespassing": 1,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 2
+        },
+        "Intrusion/Trespassing": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 1,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 3
+        },
+        "Loitering": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        },
+        "Vandalism": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 1,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 6
+        },
+        "Theft/Chain Snatching": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 1,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 1,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 4
+        },
+        "Crowd Formation/Unusual Gathering": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        },
+        "Running in a Restricted Zone": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 0
+        },
+        "Abandoned Object": {
+          "Fighting/Physical Assault": 0,
+          "Falling": 0,
+          "Fire/Smoke": 0,
+          "Intrusion/Trespassing": 0,
+          "Loitering": 0,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 0,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 0,
+          "Abandoned Object": 0,
+          "Background (Missed)": 5
+        },
+        "Background (Spurious)": {
+          "Fighting/Physical Assault": 1,
+          "Falling": 2,
+          "Fire/Smoke": 6,
+          "Intrusion/Trespassing": 15,
+          "Loitering": 1,
+          "Vandalism": 0,
+          "Theft/Chain Snatching": 2,
+          "Crowd Formation/Unusual Gathering": 0,
+          "Running in a Restricted Zone": 2,
+          "Abandoned Object": 6,
+          "Background (Missed)": 0
+        }
+      }
+    }
+  }
+}

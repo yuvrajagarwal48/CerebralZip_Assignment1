@@ -1,0 +1,109 @@
+{
+  "Accurate Detections (Tight Localization & VLM Confirmed)": [
+    [
+      "Falling_fall-01-cam0-rgb.mp4",
+      {
+        "pred": {
+          "start_time": 0.0,
+          "end_time": 6.0,
+          "class": "Falling",
+          "confidence": 0.3186,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen falling to the ground, which is clearly visible in the video frames."
+        },
+        "gt": {
+          "class": "Falling (person collapse)",
+          "start_time": 3.0,
+          "end_time": 6.4,
+          "duration": 6.4
+        },
+        "tiou": 0.46875,
+        "cdist": 1.7000000000000002
+      }
+    ],
+    [
+      "Falling_fall-02-cam0-rgb.mp4",
+      {
+        "pred": {
+          "start_time": 0.0,
+          "end_time": 4.0,
+          "class": "Falling",
+          "confidence": 0.3228,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is lying on the floor with their legs extended and arms outstretched, which is a common posture when falling."
+        },
+        "gt": {
+          "class": "Falling (person collapse)",
+          "start_time": 1.0,
+          "end_time": 4.4,
+          "duration": 4.4
+        },
+        "tiou": 0.6818181818181818,
+        "cdist": 0.7000000000000002
+      }
+    ]
+  ],
+  "Semantic Success with Boundary Discrepancy (Vicinity Hit)": [
+    [
+      "Falling_fall-05-cam0-rgb.mp4",
+      {
+        "pred": {
+          "start_time": 2.0,
+          "end_time": 6.0,
+          "class": "Falling",
+          "confidence": 0.4859,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Falling | Status: SUPPORTED | Evidence: The person is seen falling onto the floor, which is visible in the frames."
+        },
+        "gt": {
+          "class": "Falling (person collapse)",
+          "start_time": 5.0,
+          "end_time": 6.04,
+          "duration": 6.04
+        },
+        "tiou": 0.24752475247524752,
+        "cdist": 1.5199999999999996
+      }
+    ]
+  ],
+  "Precursor / Co-Occurring Actions in Multi-Stage Incidents (e.g. Arson)": [
+    [
+      "Fire_Smoke_Arson041_x264.mp4",
+      {
+        "pred": {
+          "start_time": 29.0,
+          "end_time": 39.0,
+          "class": "Intrusion/Trespassing",
+          "confidence": 0.2861,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespass | Status: SUPPORTED | Evidence: The person is seen walking towards a door, which suggests they are attempting to enter a restricted area."
+        },
+        "gt_classes": [
+          "fire / smoke"
+        ]
+      }
+    ],
+    [
+      "Fire_Smoke_Arson041_x264.mp4",
+      {
+        "pred": {
+          "start_time": 67.0,
+          "end_time": 77.0,
+          "class": "Intrusion/Trespassing",
+          "confidence": 0.4859,
+          "vlm_decision": "SUPPORTED",
+          "vlm_verified": true,
+          "vlm_evidence": "Class: Intrusion/Trespassing | Status: SUPPORTED | Evidence: The person is seen entering the building, which is not allowed, and then leaving, indicating an attempt to enter without authorization."
+        },
+        "gt_classes": [
+          "fire / smoke"
+        ]
+      }
+    ]
+  ],
+  "VLM False Alarm Pruning (Rejected Proposals)": []
+}

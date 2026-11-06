@@ -1,0 +1,12 @@
+,"Fighting/Physical Assault","Falling","Fire/Smoke","Intrusion/Trespassing","Loitering","Vandalism","Theft/Chain Snatching","Crowd Formation/Unusual Gathering","Running in a Restricted Zone","Abandoned Object","Background (Missed)"
+"Fighting/Physical Assault",0,0,0,0,0,0,0,0,0,0,4
+"Falling",0,4,0,0,0,0,0,0,0,0,1
+"Fire/Smoke",0,0,1,1,0,0,0,0,0,0,2
+"Intrusion/Trespassing",0,0,1,0,0,0,0,0,0,0,3
+"Loitering",0,0,0,0,0,0,0,0,0,0,0
+"Vandalism",0,0,1,0,0,0,0,0,0,0,6
+"Theft/Chain Snatching",0,0,0,1,0,0,1,0,0,0,4
+"Crowd Formation/Unusual Gathering",0,0,0,0,0,0,0,0,0,0,0
+"Running in a Restricted Zone",0,0,0,0,0,0,0,0,0,0,0
+"Abandoned Object",0,0,0,0,0,0,0,0,0,0,5
+"Background (Spurious)",1,2,6,15,1,0,2,0,2,6,0
